@@ -1,10 +1,10 @@
 Node.js Challenges & Exercises
 =============================
 
-###### Every file starts out with a commented section explaining/describing the problem and the expected result/solution.
+###### Every file starts out with a commented section explaining/describing the problem I've created followed by the expected result/solution.
 
 **Solving, Refactoring, & Implementing ES6**
-  1. Solve Challenges using all the techniques you've learned [Async, ES6, Functional]
+  1. Solve Challenges using all the techniques/technologies I've learned [Async, ES6, Functional]
   2. Create New Folders & use Lodash.js instead of Native methods to solve the  Challenges
   3. Comment code.  
 
