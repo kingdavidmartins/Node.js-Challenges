@@ -3,5 +3,18 @@
 // in the following formant. user userName : message. order by date posted or time posted is irrelevant
 
 var fs = require('fs');
-var newsFeed = () => fs.readFile("newsFeedData.json", "utf8", (err, data) => console.log(err ? "err: " + err : JSON.parse(data).map((obj) => obj.postMessage !== undefined ? obj.postMessage.map((postMessage) => `User ${obj.user} : ${postMessage.text}`).join("\n") : "a" ).filter((value) => value !== "a").join("\n")));
+var newsFeed = () =>
+  fs.readFile("newsFeedData.json", "utf8", (err, data) =>
+    console.log(
+      (err) // statement
+        ? `log: ${err}` // run if true
+        : JSON.parse(data) // run if false
+            .map((obj) =>
+              (obj.postMessage !== undefined) // statement
+                ? obj.postMessage // run if true
+                  .map((postMessage) => `User ${obj.user} : ${postMessage.text}`)
+                  .join("\n")
+                : "a") // run if false
+            .filter((value) => value !== "a")
+            .join("\n")));
 newsFeed();

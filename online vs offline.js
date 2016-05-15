@@ -4,5 +4,18 @@
 // print out which users are online and which users are offline seperated by lines
 
 var fs = require('fs');
-var userStatus = () => fs.readFile("onlinevsOfflineData.json", "utf8", (err, data) => console.log(err ? "err: " + err : JSON.parse(data).filter((value) => value.active === true).map((value) => value.user + " is online").join("\n"), "\n" + JSON.parse(data).filter((value) => value.active === false).map((value) => value.user + " is offline").join("\n")));
+var userStatus = () =>
+  fs.readFile("onlinevsOfflineData.json", "utf8", (err, data) =>
+    console.log(
+      (err) // statement
+      ? `log:  + ${err}` // run if true
+      : JSON.parse(data) // run if false
+          .filter((obj) => obj.active === true)
+          .map((obj) => obj.user + " is online")
+          .join("\n")
+          + "\n"
+          + JSON.parse(data)
+          .filter((obj) => obj.active === false)
+          .map((obj) => obj.user + " is offline")
+          .join("\n")));
 userStatus();

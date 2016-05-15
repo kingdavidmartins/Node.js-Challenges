@@ -6,7 +6,7 @@ Node.js Challenges & Exercises
 **Solving, Refactoring, & Implementing ES6**
   1. Solve Challenges using all the techniques/technologies I've learned [Async, ES6, Functional]
   2. Create New Folders & use Lodash.js instead of Native methods to solve the  Challenges
-  3. Comment code.  
+  3. Use Airbnb Javascript Style Guide  
 
 
 **I am Teachable, Determined, & Joyful**

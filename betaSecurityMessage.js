@@ -32,8 +32,29 @@ app.get("/beta", (req, res) => {
 });
 
 app.post("/beta", (req, res) => {
-  res.send( req.body.password === betaSitePassword ? "<html><h1>Welcome to Beta Site</h1></html>" : "<html><h1>Err: Invalid Password</h1></html>");
-  req.body.password !== betaSitePassword ? fs.readFile("betaSecurityMessageAdminData.json", "utf8" , (err, data) => console.log(err ? `Log: ${err}` : JSON.parse(data).map((obj) => client.messages.create({ to: obj.number, from: twilioFromNumber, body: "Someone tried to access Beta Site. Please change Password!" }, (err, message) => console.log(err ? `Log: ${JSON.stringify(err)}` : `Message was a success. Message ID: ${message.sid}`) )))) : "Password was correct";
+  res.send(
+    (req.body.password === betaSitePassword) // statement
+      ? "<html><h1>Welcome to Beta Site</h1></html>" // run if true
+      : "<html><h1>Err: Invalid Password</h1></html>"); // run if false
+  (req.body.password !== betaSitePassword) // statement
+    ? fs.readFile("betaSecurityMessageAdminData.json", "utf8" , (err, data) => //run if true
+        console.log(
+          (err) // statement
+            ? `Log: ${err}` // run if true
+            : JSON.parse(data) // run if false
+                .map((obj) =>
+                  client.messages.create(
+                    {
+                      to: obj.number,
+                      from: twilioFromNumber,
+                      body: "Someone tried to access Beta Site. Please change Password!"
+                    },
+                    (err, message) =>
+                      console.log(
+                        (err) // statement
+                        ? `Log: ${JSON.stringify(err)}` // run if true
+                        : `Message was a success. Message ID: ${message.sid}`) )))) // run if false
+    : "Password was correct"; // run if false
 })
 
 var port = process.env.PORT || 3000;
