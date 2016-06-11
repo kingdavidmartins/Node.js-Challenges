@@ -2,8 +2,8 @@
 // will take read all the users postMessage that was sent to the DB and print them
 // in the following formant. user userName : message. order by date posted or time posted is irrelevant
 
-var fs = require('fs');
-var newsFeed = () =>
+import fs from 'fs'
+const newsFeed = () =>
   fs.readFile("newsFeedData.json", "utf8", (err, data) =>
     console.log(
       (err) // statement
@@ -16,5 +16,5 @@ var newsFeed = () =>
                   .join("\n")
                 : "a") // run if false
             .filter((value) => value !== "a")
-            .join("\n")));
-newsFeed();
+            .join("\n")))
+newsFeed()

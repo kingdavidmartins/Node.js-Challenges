@@ -6,19 +6,20 @@
 // by letting them know someone has tried to gain access but failed and they should try to change the beta Site
 // password for security reasons.
 
-var express = require('express');
-var fs = require('fs');
-var bodyParser = require('body-parser');
+import express from 'express';
+import fs from 'fs';
+import bodyParser from 'body-parser';
 
-var config = require("./config.js");
-var betaSitePassword = config.betaSitePassword;
+import config from "./config.js";
+const betaSitePassword = config.betaSitePassword;
 
-var accountSid = config.twilio.TWILIO_ACCOUNT_SID;
-var authToken = config.twilio.TWILIO_AUTH_TOKEN;
-var twilioFromNumber = config.twilio.TWILIO_NUMBER;
-var client = require('twilio')(accountSid, authToken);
+const accountSid = config.twilio.TWILIO_ACCOUNT_SID;
+const authToken = config.twilio.TWILIO_AUTH_TOKEN;
+const twilioFromNumber = config.twilio.TWILIO_NUMBER;
+import twilio from 'twilio';
+const client = new twilio.RestClient(accountSid, authToken);
 
-var app = express();
+const app = express();
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -57,5 +58,5 @@ app.post("/beta", (req, res) => {
     : "Password was correct"; // run if false
 })
 
-var port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server listening on port ${port}!`));

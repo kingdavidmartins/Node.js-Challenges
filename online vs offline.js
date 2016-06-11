@@ -3,8 +3,8 @@
 // online. when active is false user is offline. create a function user status that
 // print out which users are online and which users are offline seperated by lines
 
-var fs = require('fs');
-var userStatus = () =>
+import fs from 'fs'
+const userStatus = () =>
   fs.readFile("onlinevsOfflineData.json", "utf8", (err, data) =>
     console.log(
       (err) // statement
@@ -17,5 +17,5 @@ var userStatus = () =>
           + JSON.parse(data)
           .filter((obj) => obj.active === false)
           .map((obj) => obj.user + " is offline")
-          .join("\n")));
-userStatus();
+          .join("\n")))
+userStatus()
