@@ -53,8 +53,8 @@ app.post("/beta", (req, res) => {
                     (err, message) =>
                       console.log(
                         (err) // statement
-                        ? `Log: ${JSON.stringify(err)}` // run if true
-                        : `Message was a success. Message ID: ${message.sid}`) )))) // run if false
+                          ? `Log: ${JSON.stringify(err)}` // run if true
+                          : `Message was a success. Message ID: ${message.sid}`) )))) // run if false
     : "Password was correct"; // run if false
 })
 
